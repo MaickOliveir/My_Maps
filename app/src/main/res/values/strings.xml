@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">My Maps</string>
+    <string name="search_title">Search</string>
+    <string name="add_country">Country</string>
+    <string name="add_state">State</string>
+    <string name="add_city">City</string>
+    <string name="add_Obs">Observations</string>
+    <string name="add_typeMap">Map Type</string>
+    <string name="map_name">Map Name</string>
+    <string name="edit_text_menu_recycler">Edit Text</string>
+    <string name="edit_menu_recycler">Edit</string>
+    <string-array name="mapTypes">
+        <item>Political</item>
+        <item>Geological</item>
+        <item>Physical</item>
+        <item>Topographic</item>
+        <item>Resource</item>
+        <item>Road Map</item>
+        <item>Thematic</item>
+        <item>Climate</item>
+        <item>Another</item>
+
+    </string-array>
+</resources>
