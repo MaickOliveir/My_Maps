@@ -53,6 +53,7 @@ public class add_map extends AppCompatActivity {
     StorageReference storageRef;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference databaseReference;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
     @Override
@@ -156,8 +157,6 @@ public class add_map extends AppCompatActivity {
 
     private void storeUserData() {
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        databaseReference = FirebaseFirestore.getInstance().collection("users").document(signInAccount.getId()).collection("user_maps");
-
 
         String mapName = editText_mapName.getText().toString();
         String state = editText_state.getText().toString();
@@ -165,13 +164,11 @@ public class add_map extends AppCompatActivity {
         String observation = editText_observation.getText().toString();
         String mapType = spinner.getSelectedItem().toString();
 
+        DatabaseReference myRef = database.getReference("users").child(signInAccount.getId()).child(mapName);
+        UserHelperClass helperClass = new UserHelperClass(mapName, state, city, observation, mapType);
 
-        Map<String, Object> user = new HashMap<>();
-        user.put(MAP_NAME, mapName);
-
+        myRef.setValue(helperClass);
         // Add a new document with a generated ID
-
-        db.collection("users").document(signInAccount.getId()).collection("user_maps").document().set(user);
     }
 
     private void openUserFiles() {

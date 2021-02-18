@@ -15,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +48,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User_files extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class User_files<FirebaseRecyclerOptions> extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     FirebaseDatabase rootNode;
     FirebaseFirestore firebaseFirestore;
@@ -54,6 +56,12 @@ public class User_files extends AppCompatActivity implements PopupMenu.OnMenuIte
     FirestoreRecyclerAdapter adapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference documentReference;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    EditText editText_state;
+    EditText editText_city;
+    EditText editText_mapName;
+    Spinner spinner;
+    EditText editText_observation;
 
 
     @Override
@@ -61,23 +69,30 @@ public class User_files extends AppCompatActivity implements PopupMenu.OnMenuIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_files);
 
+        editText_mapName = findViewById(R.id.editText_mapName);
+        editText_state = findViewById(R.id.editText_state);
+        editText_city = findViewById(R.id.editText_city);
+        spinner = findViewById(R.id.spinner);
+        editText_observation = findViewById(R.id.editText_observation);
+
+        String mapName = editText_mapName.getText().toString();
+        String state = editText_state.getText().toString();
+        String city = editText_city.getText().toString();
+        String observation = editText_observation.getText().toString();
+        String mapType = spinner.getSelectedItem().toString();
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         mRecyclerView = findViewById(R.id.mrecyclerView);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-
-        CollectionReference query = firebaseFirestore.collection("users").document(signInAccount.getId()).collection("user_maps");
+        Query query = database.getReference("users").child(signInAccount.getId()).child(mapName);
         //recycler options
-        FirestoreRecyclerOptions<UserHelperClass> options = new FirestoreRecyclerOptions.Builder<UserHelperClass>()
-                .setQuery(query, UserHelperClass.class)
-                .build();
 
         adapter = new FirestoreRecyclerAdapter<UserHelperClass, viewholderHelperclass>(options) {
             @Override
             protected void onBindViewHolder(@NonNull viewholderHelperclass holder, int position, @NonNull UserHelperClass model) {
 
                 holder.tv_recyclerView.setText(model.getMapName());
-
             }
 
             @NonNull
