@@ -1,4 +1,4 @@
-package com.jm.mymaps;
+/*package com.jm.mymaps;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,10 +53,9 @@ public class User_files<FirebaseRecyclerOptions> extends AppCompatActivity imple
 
     FirebaseDatabase rootNode;
     FirebaseFirestore firebaseFirestore;
-    RecyclerView mRecyclerView;
+
     FirestoreRecyclerAdapter adapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference documentReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     EditText editText_state;
     EditText editText_city;
@@ -85,63 +85,19 @@ public class User_files<FirebaseRecyclerOptions> extends AppCompatActivity imple
         mRecyclerView = findViewById(R.id.mrecyclerView);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        Query query = database.getReference("users").child(signInAccount.getId()).child(mapName);
-        //recycler options
 
-        adapter = new FirestoreRecyclerAdapter<UserHelperClass, viewholderHelperclass>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull viewholderHelperclass holder, int position, @NonNull UserHelperClass model) {
-
-                holder.tv_recyclerView.setText(model.getMapName());
-            }
-
-            @NonNull
-            @Override
-            public viewholderHelperclass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-                return new viewholderHelperclass(view);
-            }
-        };
-
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(adapter);
     }
 
-    private static class viewholderHelperclass extends RecyclerView.ViewHolder {
-
-        private final TextView tv_recyclerView;
-        private ImageView image;
-        private ImageButton edit_item_recycler;
 
 
-        public viewholderHelperclass(@NonNull View itemView) {
-            super(itemView);
-
-            tv_recyclerView = itemView.findViewById(R.id.tv_recyclerView);
-            image = itemView.findViewById(R.id.image);
-            edit_item_recycler = itemView.findViewById(R.id.edit_item_recycler);
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 
     public void show_menu_recyclerView(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
         popupMenu.setOnMenuItemClickListener(this);
         popupMenu.inflate(R.menu.menu_recyclerview);
         popupMenu.show();
-    }
+        }
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -169,3 +125,4 @@ public class User_files<FirebaseRecyclerOptions> extends AppCompatActivity imple
 }
 
 
+*/

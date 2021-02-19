@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User_files"
+    tools:context=".UserFiles"
     android:padding="10dp">
 
     <SearchView
@@ -21,7 +21,7 @@
     </SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mrecyclerView"
+        android:id="@+id/teste"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -37,7 +37,7 @@
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/mrecyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_View"
         app:layout_constraintEnd_toStartOf="@+id/searchView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.31"

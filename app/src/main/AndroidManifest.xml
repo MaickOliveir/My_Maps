@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMaps">
-        <activity android:name=".user_files_kt"></activity>
+        <activity android:name=".UserFiles"></activity>
+        <activity android:name=".user_files_kt" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".map_information" />
         <activity android:name=".User_files" />

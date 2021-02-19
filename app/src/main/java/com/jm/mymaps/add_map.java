@@ -56,6 +56,8 @@ public class add_map extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,7 +174,7 @@ public class add_map extends AppCompatActivity {
     }
 
     private void openUserFiles() {
-        Intent intent = new Intent(this, User_files.class);
+        Intent intent = new Intent(this, UserFiles.class);
         startActivity(intent);
     }
 }
